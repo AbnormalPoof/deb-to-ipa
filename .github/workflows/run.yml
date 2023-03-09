@@ -29,4 +29,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.0
         with:
           name: Tweaked App
-          path: $PWD/tweaked.ipa
+          path: /home/runner/work/deb-to-ipa/deb-to-ipa/tweaked.ipa
