@@ -1,3 +1,5 @@
+This is a fork of deb-to-ipa
+
 # Deb to IPA
 
 ▶️ Convert an application from a deb to an IPA with a GitHub workflow.
