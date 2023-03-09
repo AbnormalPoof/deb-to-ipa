@@ -15,18 +15,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Convert deb to IPA
+      - name: Install dependencies and download the specified files
         run: |
           sudo mkdir -p /tmp
           sudo apt install libplist-utils xmlstarlet libxml2-utils -y
           curl -L -o $PWD/tweak.dylib "${{ github.event.inputs.deb }}"
           curl -L -o $PWD/app.ipa "${{ github.event.inputs.ipa }}"
+          
+      - name: Install Azule and inject the tweak into the IPA
+        run: |
           git clone https://github.com/Al4ise/Azule ~/Azule
           sudo ln -sf ~/Azule/azule /usr/local/bin/azule
           azule -i $PWD/app.ipa -f $PWD/tweak.dylib -o $PWD/tweaked.ipa
 
-      - name: Upload IPA
+      - name: Upload tweaked IPA
         uses: actions/upload-artifact@v3.1.0
         with:
           name: Tweaked App
-          path: /home/runner/work/deb-to-ipa/deb-to-ipa/tweaked.ipa
+          path: /home/runner/work/tweak-injection-test/tweak-injection-test/tweaked.ipa
