@@ -23,8 +23,8 @@ jobs:
           mv app.ipa Azule
           mv tweak.dylib Azule
           cd Azule
-          chmod +x Azule
-          ./Azule
+          chmod +x azule
+          ./azule
 
       - name: Upload IPA
         uses: actions/upload-artifact@v3.1.0
