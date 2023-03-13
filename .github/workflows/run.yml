@@ -25,10 +25,10 @@ jobs:
         run: |
           git clone https://github.com/Al4ise/Azule ~/Azule
           sudo ln -sf ~/Azule/azule /usr/local/bin/azule
-          azule -i $PWD/app.ipa -f $PWD/tweak.dylib -o $PWD/tweaked.ipa
+          azule -i $PWD/app.ipa -f $PWD/tweak.dylib -o /tmp/tweaked.ipa
 
       - name: Upload tweaked IPA
         uses: actions/upload-artifact@v3.1.0
         with:
           name: Tweaked App
-          path: /home/runner/work/tweak-injection-test/tweak-injection-test/tweaked.ipa
+          path: /tmp/tweaked.ipa
